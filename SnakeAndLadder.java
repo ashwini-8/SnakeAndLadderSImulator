@@ -4,22 +4,16 @@ import java.util.Random;
 public class SnakeAndLadder {
 	// UC1 snake and ladder game played with single player at position 0
 	static final int START_POSITION = 0;
+	static final int END_POSITION = 100;
 	int PLAYER = 1;
 	static final int LADDER = 1;
 	static final int SNAKE = 2;
 	static final int NOPLAY = 0;
 	static Random random = new Random();
 	
-	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
-		int currentPositionOfPlayer = 0;
-		int diceNum = rollingDice();
-		System.out.println("diceNum:" + diceNum);
-		
-		while(currentPositionOfPlayer==100) {
-			checkPosition(diceNum);
-		}
+		checkPosition();
 		
 	}
 	// UC2 rolling a dice
@@ -28,12 +22,18 @@ public class SnakeAndLadder {
 		return diceNum;
 	}
 	// UC3 no play,ladder,snake
-		static void checkPosition(int diceNum) {
+		static void checkPosition() {
+			//UC4 repeat till the player reaches 100
+			int currentPosition=START_POSITION;
+			while(currentPosition < END_POSITION) {
+				
+			int diceNum = rollingDice();
+			System.out.println("DiceNum: "+diceNum);
+			
 			int choice = random.nextInt(3);
-			System.out.println("choice"+choice);
+			System.out.println("choice: "+choice);
 			
-			
-			switch (choice) {
+			switch (choice){
 				case NOPLAY	:
 					currentPosition = currentPosition;
 					System.out.println("no play: " + currentPosition);
@@ -50,6 +50,7 @@ public class SnakeAndLadder {
 					System.out.println("Snake: " + currentPosition);
 					break;	
 				}
+			}
 		}
 
 }
