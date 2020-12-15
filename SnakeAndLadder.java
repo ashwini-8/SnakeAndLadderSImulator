@@ -10,6 +10,7 @@ public class SnakeAndLadder {
 	static final int SNAKE = 2;
 	static final int NOPLAY = 0;
 	static Random random = new Random();
+	private static int count = 0;
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
@@ -19,23 +20,23 @@ public class SnakeAndLadder {
 	// UC2 rolling a dice
 	static int rollingDice() {
 		int diceNum = random.nextInt(6) + 1;
+		System.out.println("DiceNum: " + diceNum);
+		//UC6 no of times a dice is tossed
+		count++;
+		System.out.println("count: " + count);
 		return diceNum;
-	}
+		}
 	// UC3 no play,ladder,snake
 		static void checkPosition() {
 			//UC4 repeat till the player reaches 100
 			int currentPosition=START_POSITION;
 			while(currentPosition < END_POSITION) {
-				
 			int diceNum = rollingDice();
-			System.out.println("DiceNum: " + diceNum);
-			
-			
 			int choice = random.nextInt(3);
-			System.out.println("choice: " + choice);
+			System.out.println("choice: "+choice);
 			
 			switch (choice){
-				case NOPLAY	:
+				case NOPLAY:
 					System.out.println("no play: " + currentPosition);
 					break;
 				case LADDER:
