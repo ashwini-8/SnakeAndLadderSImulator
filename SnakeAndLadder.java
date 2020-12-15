@@ -28,24 +28,30 @@ public class SnakeAndLadder {
 			while(currentPosition < END_POSITION) {
 				
 			int diceNum = rollingDice();
-			System.out.println("DiceNum: "+diceNum);
+			System.out.println("DiceNum: " + diceNum);
+			
 			
 			int choice = random.nextInt(3);
-			System.out.println("choice: "+choice);
+			System.out.println("choice: " + choice);
 			
 			switch (choice){
 				case NOPLAY	:
-					currentPosition = currentPosition;
 					System.out.println("no play: " + currentPosition);
 					break;
 				case LADDER:
-					currentPosition = currentPosition + diceNum;
-					System.out.println("ladder: " + currentPosition);
+					//UC5 player reaches 100
+					int temp;
+					temp = currentPosition;
+					temp = temp + diceNum;
+					if (temp <= END_POSITION) {
+						currentPosition = temp;
+						System.out.println("ladder: " + currentPosition);
+					}
 					break;
 				case SNAKE:
 					currentPosition = currentPosition - diceNum;
-					if(currentPosition<0){
-						currentPosition =START_POSITION;
+					if(currentPosition < START_POSITION){
+						currentPosition = START_POSITION;
 					} 
 					System.out.println("Snake: " + currentPosition);
 					break;	
